@@ -83,6 +83,9 @@ if os.name == "posix" and sys.platform == "darwin":
                 continue
         return None
 
+elif os.name == "posix" and sys.platform.startswith("aix"):
+    from ctypes._aix import find_library
+
 elif os.name == "posix":
     # Andreas Degert's find functions, using gcc, /sbin/ldconfig, objdump
     import re, tempfile, errno
