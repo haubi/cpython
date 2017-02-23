@@ -2119,6 +2119,11 @@ class PyBuildExt(build_ext):
                              sources=['_ctypes/_ctypes_test.c'])
         self.extensions.extend([ext, ext_test])
 
+        if host_platform.startswith('aix'):
+            ext_aix = Extension('_ctypes_aix',
+                                 sources=['_ctypes/_ctypes_aix.c'])
+            self.extensions.extend([ext_aix])
+
         if not '--with-system-ffi' in sysconfig.get_config_var("CONFIG_ARGS"):
             return
 
