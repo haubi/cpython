@@ -2108,6 +2108,9 @@ class PyBuildExt(build_ext):
         elif host_platform.startswith('hp-ux'):
             extra_link_args.append('-fPIC')
 
+        elif host_platform.startswith('aix'):
+            sources.append('_ctypes/dlfcn_aix.c')
+
         ext = Extension('_ctypes',
                         include_dirs=include_dirs,
                         extra_compile_args=extra_compile_args,

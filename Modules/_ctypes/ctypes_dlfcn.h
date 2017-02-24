@@ -9,7 +9,15 @@ extern "C" {
 
 #include <dlfcn.h>
 
-#ifndef CTYPES_DARWIN_DLFCN
+#ifdef CTYPES_DARWIN_DLFCN
+
+/* found "darwin/dlfcn.h" above */
+
+#elif defined(_AIX)
+
+# include "dlfcn_aix.h"
+
+#else
 
 #define ctypes_dlsym dlsym
 #define ctypes_dlerror dlerror

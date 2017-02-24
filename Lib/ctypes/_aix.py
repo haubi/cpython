@@ -339,15 +339,14 @@ def find_library(name):
     if not remaining:
         return None
 
-    # If we still have more than one member remaining, we may
-    # want to return each for _ctypes_aix.dlopen() to load.
+    # If we still have more than one member remaining,
+    # we return each for _ctypes.dlopen() to load.
     members = ''
     for obj in remaining:
         if obj['member']:
             if members:
                 members = members + ','
             members = members + obj['member']
-            break # for now return first one only
 
     if members:
         return filename + '(' + members + ')'
