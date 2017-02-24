@@ -1449,7 +1449,7 @@ static PyObject *py_dl_close(PyObject *self, PyObject *args)
 
     if (!PyArg_ParseTuple(args, "O&:dlclose", &_parse_voidp, &handle))
         return NULL;
-    if (dlclose(handle)) {
+    if (ctypes_dlclose(handle)) {
         PyErr_SetString(PyExc_OSError,
                                ctypes_dlerror());
         return NULL;
